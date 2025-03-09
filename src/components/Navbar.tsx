@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,13 +36,15 @@ const Navbar = () => {
           <span className="font-semibold text-xl tracking-tight">AIMC</span>
         </Link>
         
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           <NavLink to="/" active={location.pathname === "/"}>Home</NavLink>
           <NavLink to="/dashboard" active={location.pathname === "/dashboard"}>Dashboard</NavLink>
           <NavLink to="/submit" active={location.pathname === "/submit"}>Submit Claim</NavLink>
+          <ThemeToggle />
         </div>
         
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
+          <ThemeToggle />
           {/* Mobile menu button would go here */}
         </div>
       </div>
