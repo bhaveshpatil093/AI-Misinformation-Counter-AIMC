@@ -10,6 +10,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { factChecks } from "@/data/factChecks";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search, BarChart3, Clock, ExternalLink, AlertTriangle, CheckCircle } from "lucide-react";
+import heroImage from "@/assets/images/hero-image.svg";
+import techBg from "@/assets/images/tech-bg.svg";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -61,53 +63,72 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-up">
-          <div className="inline-block text-xs font-medium px-3 py-1.5 bg-primary/10 text-primary rounded-full mb-6">
-            AI Misinformation Counter
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            Verify AI claims with precision and clarity
-          </h1>
-          
-          <p className="text-xl text-muted-foreground">
-            Our AI-powered fact-checking platform analyses claims about artificial intelligence 
-            to provide accurate, trustworthy information.
-          </p>
-          
-          <div className="pt-6">
-            <SearchBar 
-              onSearch={handleSearch} 
-              className="mx-auto"
-            />
-          </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
-            <Button 
-              onClick={() => navigate('/dashboard')}
-              size="lg"
-              className="rounded-xl px-6 py-6 text-base font-medium"
-            >
-              Browse Fact Checks
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-background to-muted/30">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+          <div className="text-center lg:text-left space-y-8 animate-fade-up flex-1">
+            <div className="inline-block text-xs font-medium px-3 py-1.5 bg-primary/10 text-primary rounded-full mb-6">
+              AI Misinformation Counter
+            </div>
             
-            <Button 
-              onClick={() => navigate('/submit')}
-              variant="outline"
-              size="lg"
-              className="rounded-xl px-6 py-6 text-base font-medium"
-            >
-              Submit a Claim
-            </Button>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Verify AI claims with precision and clarity
+            </h1>
+            
+            <p className="text-xl text-muted-foreground">
+              Our AI-powered fact-checking platform analyses claims about artificial intelligence 
+              to provide accurate, trustworthy information.
+            </p>
+            
+            <div className="pt-6">
+              <SearchBar 
+                onSearch={handleSearch} 
+                className="mx-auto lg:mx-0 max-w-xl"
+              />
+            </div>
+            
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-6">
+              <Button 
+                onClick={() => navigate('/dashboard')}
+                size="lg"
+                className="rounded-xl px-6 py-6 text-base font-medium"
+              >
+                Browse Fact Checks
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              
+              <Button 
+                onClick={() => navigate('/submit')}
+                variant="outline"
+                size="lg"
+                className="rounded-xl px-6 py-6 text-base font-medium"
+              >
+                Submit a Claim
+              </Button>
+            </div>
+          </div>
+          
+          <div className="flex-1 flex justify-center animate-bounce-slow">
+            <img 
+              src={heroImage} 
+              alt="AI Fact Checking Illustration" 
+              className="max-w-full h-auto shadow-lg rounded-2xl"
+              style={{maxHeight: "400px", width: "auto"}}
+            />
           </div>
         </div>
       </section>
       
       {/* Technology Section */}
-      <section className="py-16 px-6 bg-muted/50">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 px-6 relative">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img 
+            src={techBg} 
+            alt="Technology Background" 
+            className="w-full h-full object-cover opacity-50"
+          />
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Powered by Advanced Technology</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -153,7 +174,7 @@ const Index = () => {
       </section>
       
       {/* Call to Action */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">
             Help us combat AI misinformation

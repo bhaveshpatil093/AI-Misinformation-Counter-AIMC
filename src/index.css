@@ -141,3 +141,32 @@
 .glass {
   @apply bg-background/80 backdrop-blur-md border border-border/50;
 }
+
+/* Custom animation */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 6s infinite ease-in-out;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

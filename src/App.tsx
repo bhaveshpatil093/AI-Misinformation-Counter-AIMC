@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
 import ScrollToTop from "./components/ScrollToTop";
 
+// Remove unused App.css imports
 const queryClient = new QueryClient();
 
 const App = () => (

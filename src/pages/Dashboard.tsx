@@ -8,6 +8,7 @@ import { factChecks, VerificationStatus } from "@/data/factChecks";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, XCircle, AlertTriangle, Filter, X } from "lucide-react";
+import featuresImage from "@/assets/images/features-image.svg";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -85,25 +86,36 @@ const Dashboard = () => {
   }, [location.search]);
   
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-20 bg-gradient-to-b from-background to-muted/20">
       <Navbar />
       
       {/* Search Section */}
       <section className="pt-32 pb-12 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col items-center text-center mb-8 animate-fade-up">
-            <h1 className="text-3xl font-bold mb-4">AI Fact Check Dashboard</h1>
-            <p className="text-muted-foreground max-w-2xl">
-              Browse verified AI claims or search for specific information 
-              to get accurate, fact-checked results.
-            </p>
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+            <div className="md:flex-1 text-center md:text-left animate-fade-up">
+              <h1 className="text-3xl font-bold mb-4">AI Fact Check Dashboard</h1>
+              <p className="text-muted-foreground max-w-2xl">
+                Browse verified AI claims or search for specific information 
+                to get accurate, fact-checked results.
+              </p>
+              
+              <SearchBar 
+                onSearch={handleSearch} 
+                className="mt-6 mx-auto md:mx-0 max-w-xl"
+                placeholder="Search for AI claims, facts, or misinformation..."
+              />
+            </div>
+            
+            <div className="md:flex-1 flex justify-center">
+              <img 
+                src={featuresImage} 
+                alt="AI Fact Checking Dashboard" 
+                className="max-w-full h-auto rounded-xl shadow-md"
+                style={{maxHeight: "250px", width: "auto"}}
+              />
+            </div>
           </div>
-          
-          <SearchBar 
-            onSearch={handleSearch} 
-            className="mx-auto mb-8"
-            placeholder="Search for AI claims, facts, or misinformation..."
-          />
           
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3 mb-8">
