@@ -7,11 +7,14 @@ import FactCard from "@/components/FactCard";
 import FeatureCard from "@/components/FeatureCard";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import StatsSection from "@/components/StatsSection";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { factChecks } from "@/data/factChecks";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search, BarChart3, Clock, ExternalLink, AlertTriangle, CheckCircle } from "lucide-react";
 import heroImage from "@/assets/images/hero-image.svg";
 import techBg from "@/assets/images/tech-bg.svg";
+import featuresImage from "@/assets/images/features-image.svg";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -118,6 +121,9 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Stats Section */}
+      <StatsSection />
+      
       {/* Technology Section */}
       <section className="py-16 px-6 relative">
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -129,12 +135,31 @@ const Index = () => {
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powered by Advanced Technology</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              AIMC combines cutting-edge AI with reliable fact-checking
-              methodology to deliver accurate results.
-            </p>
+          <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+            <div className="flex-1">
+              <img 
+                src={featuresImage} 
+                alt="AI Features" 
+                className="max-w-full h-auto rounded-2xl shadow-lg animate-fade-in"
+              />
+            </div>
+            
+            <div className="flex-1 space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold">Powered by Advanced Technology</h2>
+              <p className="text-lg text-muted-foreground">
+                AIMC combines cutting-edge AI with reliable fact-checking
+                methodology to deliver accurate results. Our platform uses multiple verification 
+                layers to ensure the highest accuracy in detecting misinformation.
+              </p>
+              
+              <Button 
+                onClick={() => navigate('/dashboard')}
+                className="mt-4"
+              >
+                See It In Action
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -170,6 +195,13 @@ const Index = () => {
               <FactCard key={fact.id} fact={fact} featured />
             ))}
           </div>
+        </div>
+      </section>
+      
+      {/* Newsletter Section */}
+      <section className="py-16 px-6 bg-gradient-to-b from-background to-muted/20">
+        <div className="max-w-3xl mx-auto">
+          <NewsletterSignup />
         </div>
       </section>
       

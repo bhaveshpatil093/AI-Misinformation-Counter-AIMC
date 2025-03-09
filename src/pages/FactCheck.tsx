@@ -1,151 +1,129 @@
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { factChecks, FactCheck as FactCheckType } from "@/data/factChecks";
 import Navbar from "@/components/Navbar";
-import { factChecks } from "@/data/factChecks";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import VerificationStatus from "@/components/VerificationStatus";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { ExternalLink, Calendar, ArrowLeft } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import factCheckImage from "@/assets/images/fact-check.svg";
+import { ArrowLeft, Calendar, Link2 } from "lucide-react";
+import ShareButton from "@/components/ShareButton";
+import RelatedFacts from "@/components/RelatedFacts";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
-const FactCheck = () => {
+const FactCheckPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
+  const [fact, setFact] = useState<FactCheckType | null>(null);
+  const [loading, setLoading] = useState(true);
   
-  // Find the fact with the matching ID
-  const fact = factChecks.find(f => f.id === id);
-  
-  // Animate entrance
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
+    // Find the fact check with the matching ID
+    const foundFact = factChecks.find(f => f.id === id);
+    setFact(foundFact || null);
+    setLoading(false);
+  }, [id]);
   
-  // Handle case where fact is not found
-  if (!fact && !isLoading) {
+  if (loading) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col">
         <Navbar />
-        <div className="pt-32 pb-20 px-6 max-w-3xl mx-auto text-center">
-          <h1 className="text-2xl font-bold mb-4">
-            Fact check not found
-          </h1>
+        <div className="flex-1 flex items-center justify-center">
+          <div className="animate-pulse text-xl">Loading...</div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
+  if (!fact) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-1 flex flex-col items-center justify-center p-6">
+          <h1 className="text-3xl font-bold mb-4">Fact Check Not Found</h1>
           <p className="text-muted-foreground mb-8">
-            The fact check you're looking for doesn't exist or has been removed.
+            The fact check you're looking for doesn't exist or may have been removed.
           </p>
           <Button onClick={() => navigate('/dashboard')}>
-            Return to Dashboard
+            Browse All Fact Checks
           </Button>
         </div>
+        <Footer />
       </div>
     );
   }
   
   return (
-    <div className="min-h-screen pb-20 bg-gradient-to-b from-background to-muted/20">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="pt-32 px-6">
-        <div className="max-w-3xl mx-auto">
-          <Button
-            variant="ghost"
-            className="mb-6 -ml-4"
+      <main className="flex-1 py-20 px-6">
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          <Button 
+            variant="ghost" 
             onClick={() => navigate(-1)}
+            className="mb-8"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
           
-          {fact && (
-            <div className={cn(
-              "transition-all duration-500",
-              isLoading ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-            )}>
-              <div className="flex flex-col md:flex-row items-center gap-6 mb-8">
-                <div className="md:flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Badge variant="outline" className="px-3 py-1 text-xs font-medium">
-                      {fact.category}
-                    </Badge>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="w-4 h-4 mr-1.5" />
-                      {fact.date}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between mb-4">
-                    <h1 className="text-3xl font-bold">{fact.claim}</h1>
-                  </div>
-                  
-                  <VerificationStatus status={fact.status} size="lg" />
-                </div>
-                
-                <div className="md:w-1/3 flex justify-center">
-                  <img 
-                    src={factCheckImage} 
-                    alt="Fact Check Verification" 
-                    className="max-w-full h-auto rounded-lg shadow-md"
-                    style={{maxHeight: "160px", width: "auto"}}
-                  />
-                </div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <VerificationStatus status={fact.status} size="lg" />
+            <div className="flex items-center gap-3">
+              <div className="flex items-center text-sm text-muted-foreground">
+                <Calendar className="mr-2 h-4 w-4" />
+                {fact.date}
               </div>
-              
-              <div className="glass p-6 rounded-2xl mb-8">
-                <h2 className="text-xl font-semibold mb-3">Summary</h2>
-                <p className="text-muted-foreground">{fact.summary}</p>
-              </div>
-              
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-xl font-semibold mb-3">Detailed Explanation</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {fact.explanation}
-                  </p>
-                </div>
-                
-                <Separator />
-                
-                <div>
-                  <h2 className="text-xl font-semibold mb-3">Source</h2>
-                  <p className="text-muted-foreground">
-                    This claim was found in: <span className="font-medium">{fact.source}</span>
-                  </p>
-                </div>
-                
-                <Separator />
-                
-                <div>
-                  <h2 className="text-xl font-semibold mb-3">References</h2>
-                  <ul className="space-y-3">
-                    {fact.references.map((reference, index) => (
-                      <li key={index}>
-                        <a 
-                          href={reference} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-start text-primary hover:underline"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
-                          <span>{reference}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              <ShareButton fact={fact} />
             </div>
-          )}
+          </div>
+          
+          <div className="glass rounded-2xl p-8 mb-12">
+            <h1 className="text-3xl font-bold mb-6">{fact.claim}</h1>
+            
+            <div className="flex items-center text-sm text-muted-foreground mb-8">
+              <Link2 className="mr-2 h-4 w-4" />
+              Source: {fact.source}
+            </div>
+            
+            <div className="space-y-6">
+              <h2 className="text-xl font-semibold">Summary</h2>
+              <p className="text-lg">{fact.summary}</p>
+              
+              <h2 className="text-xl font-semibold pt-4">Detailed Explanation</h2>
+              <p className="whitespace-pre-line">{fact.explanation}</p>
+              
+              <h2 className="text-xl font-semibold pt-4">References</h2>
+              <ul className="list-disc pl-6">
+                {fact.references.map((ref, index) => (
+                  <li key={index} className="mb-2">
+                    <a 
+                      href={ref} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      {ref}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          <NewsletterSignup className="mb-12" />
+          
+          <RelatedFacts currentFactId={fact.id} category={fact.category} />
         </div>
-      </div>
+      </main>
+      
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };
 
-export default FactCheck;
+export default FactCheckPage;
