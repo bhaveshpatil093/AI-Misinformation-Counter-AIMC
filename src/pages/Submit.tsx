@@ -1,13 +1,15 @@
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import FactSubmissionForm from "@/components/FactSubmissionForm";
 
 const Submit = () => {
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <section className="pt-32 px-6">
+      <section className="pt-32 px-6 flex-1">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h1 className="text-3xl font-bold mb-4">
             Submit a Claim for Fact-Checking
@@ -20,6 +22,9 @@ const Submit = () => {
         
         <FactSubmissionForm />
       </section>
+      
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };

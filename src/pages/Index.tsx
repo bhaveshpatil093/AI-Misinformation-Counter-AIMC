@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import FactCard from "@/components/FactCard";
 import FeatureCard from "@/components/FeatureCard";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { factChecks } from "@/data/factChecks";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search, BarChart3, Clock, ExternalLink, AlertTriangle, CheckCircle } from "lucide-react";
@@ -170,6 +172,9 @@ const Index = () => {
           </Button>
         </div>
       </section>
+      
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };
