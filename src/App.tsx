@@ -10,12 +10,13 @@ import Dashboard from "./pages/Dashboard";
 import FactCheck from "./pages/FactCheck";
 import Submit from "./pages/Submit";
 import NotFound from "./pages/NotFound";
+import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="system" storageKey="aimc-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="aimc-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/submit" element={<Submit />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Chatbot />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
