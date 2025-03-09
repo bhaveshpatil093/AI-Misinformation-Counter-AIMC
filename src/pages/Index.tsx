@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import FactCard from "@/components/FactCard";
+import FeatureCard from "@/components/FeatureCard";
 import { factChecks } from "@/data/factChecks";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Search, BarChart3, Clock, ExternalLink, AlertTriangle, CheckCircle } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -19,6 +20,39 @@ const Index = () => {
   
   // Get featured fact checks (most recent 3)
   const featuredFactChecks = factChecks.slice(0, 3);
+  
+  const features = [
+    {
+      icon: <Search className="w-6 h-6 text-primary" />,
+      title: "Advanced Text Analysis",
+      description: "Our AI scans and analyzes text content to identify potential misinformation patterns and suspicious claims."
+    },
+    {
+      icon: <CheckCircle className="w-6 h-6 text-verified" />,
+      title: "Fact Verification",
+      description: "Cross-references content with a database of verified information to confirm accuracy and credibility."
+    },
+    {
+      icon: <AlertTriangle className="w-6 h-6 text-mixed" />,
+      title: "Misinformation Alerts",
+      description: "Receive instant notifications when potential false information is detected in content you're analyzing."
+    },
+    {
+      icon: <ExternalLink className="w-6 h-6 text-blue-400" />,
+      title: "Source Evaluation",
+      description: "Assess the credibility of sources and identify potentially misleading or biased information."
+    },
+    {
+      icon: <Clock className="w-6 h-6 text-false" />,
+      title: "Real-time Processing",
+      description: "Get immediate results with our powerful AI processing that analyzes content in seconds."
+    },
+    {
+      icon: <BarChart3 className="w-6 h-6 text-accent" />,
+      title: "Confidence Metrics",
+      description: "View detailed confidence scores that indicate the reliability of our AI's assessment."
+    }
+  ];
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -65,6 +99,30 @@ const Index = () => {
             >
               Submit a Claim
             </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* Technology Section */}
+      <section className="py-16 px-6 bg-muted/50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powered by Advanced Technology</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Truth Sentinel combines cutting-edge AI with reliable fact-checking
+              methodology to deliver accurate results.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <FeatureCard 
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
           </div>
         </div>
       </section>
