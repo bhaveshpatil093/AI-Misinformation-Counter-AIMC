@@ -11,12 +11,13 @@ import FactCheck from "./pages/FactCheck";
 import Submit from "./pages/Submit";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="aimc-theme">
+    <ThemeProvider defaultTheme="light" storageKey="aimc-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Chatbot />
+          <ScrollToTop />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
