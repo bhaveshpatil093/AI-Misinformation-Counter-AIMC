@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div>
-            <h3 className="font-bold text-lg mb-4">Truth Sentinel</h3>
+            <h3 className="font-bold text-lg mb-4">AI Misinformation Counter</h3>
             <p className="text-muted-foreground mb-4">
               Our AI-powered fact-checking platform analyzes claims about artificial intelligence
               to provide accurate, trustworthy information.
@@ -90,8 +90,8 @@ const Footer = () => {
             <address className="not-italic text-muted-foreground">
               <div className="flex items-center mb-2">
                 <Mail className="mr-2 h-4 w-4" />
-                <a href="mailto:info@truthsentinel.com" className="hover:text-primary transition-colors">
-                  info@truthsentinel.com
+                <a href="mailto:info@aimc.com" className="hover:text-primary transition-colors">
+                  info@aimc.com
                 </a>
               </div>
             </address>
@@ -99,7 +99,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {currentYear} Truth Sentinel. All rights reserved.</p>
+          <p>&copy; {currentYear} AI Misinformation Counter. All rights reserved.</p>
         </div>
       </div>
     </footer>

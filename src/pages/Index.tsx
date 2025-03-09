@@ -111,7 +111,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Powered by Advanced Technology</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Truth Sentinel combines cutting-edge AI with reliable fact-checking
+              AIMC combines cutting-edge AI with reliable fact-checking
               methodology to deliver accurate results.
             </p>
           </div>
