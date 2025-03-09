@@ -1,69 +1,84 @@
-# Welcome to your Lovable project
+# 🤖 AI Misinformation Counter (AIMC)
 
-## Project info
+🔍 **Detecting and Countering Misinformation with AI**
 
-**URL**: https://lovable.dev/projects/0b99dd05-114a-46c2-9b27-a208173c4278
+## 📖 Table of Contents
+- [✨ Features](#-features)
+- [🚩 Problem Statement](#-problem-statement)
+- [💡 Solution](#-solution)
+- [🛠️ Installation](#️-installation)
+- [🏁 Getting Started](#-getting-started)
+- [🌍 Contributing](#-contributing)
+- [📄 License](#-license)
 
-## How can I edit this code?
+## ✨ Features
+- ✅ AI-powered misinformation detection
+- ✅ Real-time content analysis
+- ✅ User-friendly interface
+- ✅ High accuracy and efficiency
+- ✅ Open-source and customizable
 
-There are several ways of editing your application.
+---
+## 🚩 Problem Statement
+> 🌍 The spread of misinformation online has become a significant challenge, leading to confusion and distrust. There is a need for a reliable AI-based solution to detect and counter misinformation effectively.
 
-**Use Lovable**
+---
+## 💡 Solution
+AIMC provides:
+- 📊 AI-driven content verification
+- 🔎 Real-time analysis of online information
+- 🛠 Easy-to-use interface for fact-checking
+- 🌍 Open-source community contributions
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0b99dd05-114a-46c2-9b27-a208173c4278) and start prompting.
+---
+## 🛠️ Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
+- Python 3.8+
+- pip package manager
 
-**Use your preferred IDE**
+### Setup Instructions
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/bhaveshpatil093/AI-Misinformation-Counter-AIMC.git
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Navigate to the project directory:
+   ```bash
+   cd AI-Misinformation-Counter-AIMC
+   ```
 
-Follow these steps:
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4. Run the application:
+   ```bash
+   python app.py
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🏁 Getting Started
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Run AIMC using**:
+   ```bash
+   python app.py
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+2. **Enter the text or URL** you want to fact-check.
 
-**Edit a file directly in GitHub**
+3. **Review the results** to see if the content is reliable.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌍 Contributing
 
-**Use GitHub Codespaces**
+We welcome contributions! Follow these steps:
+- Fork the repository 🍴
+- Create your feature branch (`git checkout -b feature-branch`)
+- Commit your changes (`git commit -m 'Add new feature'`)
+- Push to the branch (`git push origin feature-branch`)
+- Submit a Pull Request 🔃
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 License
 
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0b99dd05-114a-46c2-9b27-a208173c4278) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project is licensed under the MIT License - see the `LICENSE` file for details.
